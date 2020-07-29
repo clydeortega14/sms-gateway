@@ -1,0 +1,72 @@
+html,body{
+  height: 100%;
+}
+
+body{
+	background: lightcyan;
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Montserrat';
+}
+
+.container{
+	position: absolute;
+	left: 42%;
+	top: 45%;
+}
+
+.btn {
+  display: inline-block;
+  padding: 18px 50px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 0;
+  border: none;
+  font-size: 16px;
+}
+
+.btn-dialog{
+  background: #e2525c;
+}
+
+.awd-ok{
+	background: #2196F3;
+}
+
+.awd-cancel{
+	background: transparent;
+	color: #678994;
+}
+
+.awd-cancel:hover{
+	background: #ddd;
+	color: #0079ff;
+}
+
+.awsm-dialog{
+	display: none;
+	position: fixed;
+	top: calc(50% - 80px);
+	left: calc(50% - 200px);
+	width: 400px;
+	background: #eee;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+	padding: 40px 0;
+}
+
+.awd-content{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.awd-message{
+	font-size: 20px;
+	font-weight: 300;
+	margin: 0;
+	margin-bottom: 30px
+}

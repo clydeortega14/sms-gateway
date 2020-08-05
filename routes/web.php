@@ -81,8 +81,16 @@ Route::middleware(['auth'])->group(function(){
 	//Ajax Request
 	Route::get('/findTotalUsage', 'ReceiptController@invoiceTotalUsage');
 
+	/*Clients Resource*/
+	Route::resource('clients', 'ClientController');
 
-
+	Route::get('client/{id}/branches', 'ClientBranchesController@getBranches')->name('client.branches');
+	// create client branches
+	Route::get('create/{client_id}/branches', 'ClientBranchesController@create')->name('create.branch');
+	// Store new branch for client
+	Route::post('store/client/branch', 'ClientBranchesController@store')->name('store.client.branch');
+	// tagging client to branches route
+	Route::post('update-client-branches', 'ClientBranchesController@updateClientBranch')->name('update.client.branch');
 
 
 });

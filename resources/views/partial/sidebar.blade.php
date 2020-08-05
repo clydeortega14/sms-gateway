@@ -1,4 +1,4 @@
-<div class="left-sidebar" style="background-image: url('images/e2.jpg'); background-repeat: no-repeat;">
+<div class="left-sidebar" style="background-image: url('{{ asset('images/e2.jpg') }}'); background-repeat: no-repeat;">
     <div class="scroll-sidebar">
         <nav class="sidebar-nav">
              <ul id="sidebarnav">
@@ -51,6 +51,7 @@
                               <ul aria-expanded="false" class="collapse">
                                 <!--SuperAdmin Access-->
                                 @if(auth()->user()->hasRole('superadmin'))
+                                  <li><a href="{{ route('clients.index') }}"><i class="fa fa-info-circle"></i> Client Lists </a></li>
                                   <li><a href="/create-accounts-credentials"><i class="fa fa-info-circle"></i> Accounts & Credentials</a></li>
                                   {{-- <li><a href="/create-client-access"><i class="fa fa-cogs"></i> Create Client Access</a></li> --}}
                                 @endif

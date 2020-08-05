@@ -4,7 +4,7 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/dashboard">
                         <!-- Logo icon -->
-                        <b><img src="images/new-logo.png" style="height: 50px; width: 68px;" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="{{ asset('images/new-logo.png') }}" style="height: 50px; width: 68px;" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                          <span ><b class="h-title">SMS-Gateway</b></span> 
@@ -24,11 +24,11 @@
 
                         <li class="nav-item dropdown">
                             @if(auth()->user()->information_id == null)
-                                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/new-logo.png" alt="user" class="profile-pic" /></a>
+                                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/new-logo.png') }}" alt="user" class="profile-pic" /></a>
                             @else
 
                                 @if(auth()->user()->informations->image == null)
-                                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/new-logo.png" alt="user" class="profile-pic"/></a>
+                                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/new-logo.png') }}" alt="user" class="profile-pic"/></a>
                                 @else
                                 <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('storage/uploads/'.auth()->user()->informations->image) }}" alt="user" class="profile-pic" /></a>
                                 @endif

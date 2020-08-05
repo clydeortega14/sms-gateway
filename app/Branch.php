@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
     protected $table = 'branches';
-    protected $fillable = ['user_id', 'credentials_id', 'branch_id', 'branch_name'];
+    protected $fillable = ['client_id', 'branch_name', 'branch_description', 'status'];
 
     public function getUser()
     {
@@ -25,5 +25,14 @@ class Branch extends Model
     public function getOutboxes()
     {
         return $this->hasMany('App\Outbox', 'branch_id', 'branch_id');
+    }
+    public function client()
+    {
+        return $this->belongsTo('App\Client', 'id');
+    }
+
+    public function formatStatus()
+    {
+        return $this->status == 1 ? 'Active' : 'Inactive';
     }
 }

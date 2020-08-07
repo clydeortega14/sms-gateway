@@ -14,4 +14,8 @@ class Client extends Model
     {
     	return $this->hasMany('App\Branch', 'client_id');
     }
+    public function credentials()
+    {
+    	return $this->hasMany('App\Credentials', 'client_id');
+    }
 }

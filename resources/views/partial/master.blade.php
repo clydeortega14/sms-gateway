@@ -19,6 +19,8 @@
     {{-- <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> --}}
     <link href="{{ asset('css/lib/data-table/buttons.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lib/data-table/buttons.dataTables.min.css') }}" rel="stylesheet">
+    {{-- SWEETALERT --}}
+    <link rel="stylesheet" href="{{ asset('css/lib/sweetalert/sweetalert.css') }}">
 
 </head>
 
@@ -56,6 +58,9 @@
 
     <script src="{{ asset('js/lib/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js') }}"></script>
+
+    <!-- SweetAlert -->
+    <script src="{{ asset('js/lib/sweetalert/sweetalert.min.js') }}"></script>
     {{-- <script src="js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <script src="js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script src="js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>

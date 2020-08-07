@@ -101,7 +101,7 @@ class UserController extends Controller
         $access = Credentials::where('user_id', $user->id)->first();
         $payment = Payment::where('credentials_id', $access->id)->where('date_expire', null)->first();
         $invoice = Invoice::where('payment_id', $payment->id)->first();
-        $branches = Branch::where('credentials_id', $access->id)->get();
+        $branches = Branch::with(['client'])->get();
 
         // GET SMS SUMMARY FOR EVER BRANCH
         $sms_summary = $this->getSmsSummary($branches, $invoice, $access);

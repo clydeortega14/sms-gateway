@@ -48,14 +48,14 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a> |
 
-                                                    <a href="#" class="btn btn-success btn-sm" data-toggle="tooltip" title="Update Status">
+                                                    <a href="#" class="btn btn-success btn-sm">
                                                         <i class="fa fa-reply"></i>
                                                     </a> |
 
                                                     <a href="{{ route('client.branches', $client->id) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Branches">
                                                         <i class="fa fa-plus"></i>
                                                     </a> |
-                                                    <a href="#" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Globe Credential">
+                                                    <a href="{{ route('client.credentials', $client->id) }}" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Globe Credential">
                                                         <i class="fa fa-plus"></i>
                                                     </a> 
                                                 </td>

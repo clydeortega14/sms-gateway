@@ -83,7 +83,9 @@ Route::middleware(['auth'])->group(function(){
 
 	/*Clients Resource*/
 	Route::resource('clients', 'ClientController');
-
+	// client credentials
+	Route::get('client/{id}/credentials', 'ClientCredentials@index')->name('client.credentials');
+	// client branches
 	Route::get('client/{id}/branches', 'ClientBranchesController@getBranches')->name('client.branches');
 	// create client branches
 	Route::get('create/{client_id}/branches', 'ClientBranchesController@create')->name('create.branch');

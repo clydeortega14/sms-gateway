@@ -31,8 +31,10 @@ class ClientBranchesController extends Controller
     {
         // Validation
         $this->validation($request);
+        // data
+        $data = $request->except(['status', 'client_id']);
         // Create
-        Branch::create($this->data($request->except(['status', 'client_id'])) + ['status' => true, 'client_id' => $request->client_id]);
+        Branch::create($this->data($data) + ['status' => true, 'client_id' => $request->client_id]);
 
         return redirect()->route('client.branches', $request['client_id'])->with('success', 'thank you');
     }

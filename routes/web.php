@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-branch-access', 'BranchesController@get_branch');
 	Route::post('/save-branch-access', 'BranchesController@post_branch_access');
 	Route::get('/branch-details', 'BranchesController@get_branch_details');
+	Route::put('/update-branch-status/{id}', 'BranchesController@update');
 	// Route::get('/branch-users', 'BranchesController@get_branch_users');
 
 
@@ -93,6 +94,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('store/client/branch', 'ClientBranchesController@store')->name('store.client.branch');
 	// tagging client to branches route
 	Route::post('update-client-branches', 'ClientBranchesController@updateClientBranch')->name('update.client.branch');
+
+	/* Globe Credentials */
+	Route::get('/add-credential/{client_id}', 'ClientController@addCredential')->name('add.credential');
 
 
 });

@@ -48,7 +48,7 @@ class InvoiceController extends Controller
         }
     }
 
-  public function view_invoice_postpaid($id)
+    public function view_invoice_postpaid($id)
     {
         $bills = Bills::findOrFail($id);
         $users = auth()->user();

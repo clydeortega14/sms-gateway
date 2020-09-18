@@ -124,4 +124,11 @@ class ClientController extends Controller
     {
         //
     }
+
+    public function addCredential($client_id)
+    {
+        $client = Client::findOrFail($client_id);
+
+        return view('pages.credentials.add-credential', compact('client'));
+    }
 }

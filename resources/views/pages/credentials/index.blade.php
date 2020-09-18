@@ -13,7 +13,7 @@
 				<div class="col-sm-12">
 					<div class="card">
 						<div class="card-title">
-							<a href="#" class="btn btn-primary btn-sm pull-right" data-toggle="tooltip" title="Add new credential">
+							<a href="{{ route('add.credential', $client->id) }}" class="btn btn-primary btn-sm pull-right" data-toggle="tooltip" title="Add new credential">
                                 <i class="fa fa-plus"></i>
                             </a>
 						</div>

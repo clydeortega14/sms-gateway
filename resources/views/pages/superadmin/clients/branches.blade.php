@@ -40,9 +40,9 @@
                                                 <a href="" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Edit Branch">
                                                     <i class="fa fa-edit"></i>
                                                 </a> |
-                                                <a href="" class="btn btn-{{ $branch->formatStatus() == 'Active' ? 'danger' : 'success' }} btn-sm" data-toggle="tooltip" title="Update Status">
+                                                <button class="btn btn-{{ $branch->formatStatus() == 'Active' ? 'danger' : 'success' }} btn-sm update-status" rel="{{ $branch->id }}" data-toggle="tooltip" title="Update Status">
                                                     <i class="fa fa-reply"></i>
-                                                </a> |
+                                                </button> |
 
                                                 <a href="" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Users">
                                                     <i class="fa fa-users"></i>
@@ -59,5 +59,63 @@
     	</div>
     </div>
 </div>
+
+@endsection
+
+
+@section('script')
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script>
+        
+        $(function(){
+
+            $('.update-status').on('click', function(){
+
+                let id = $(this).attr('rel');
+
+                swal({
+
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+
+                }).then((confirm) => {
+                    if(confirm){
+
+                        $.ajax({
+
+                            method: 'PUT',
+                            url: `/update-branch-status/${id}`,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response){
+
+                                swal("Successfully Update", {
+                                    icon: "success"
+                                });
+
+                                location.reload()
+                            },
+                            error: function(err){
+                                console.log(error)
+                            }
+                        })
+
+                    }else{
+
+                        swal("Error", "updating has been cancelled", "error")
+                    }
+                })
+
+                
+            })
+
+        });
+    </script>
 
 @endsection

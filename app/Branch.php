@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
     protected $table = 'branches';
-    protected $fillable = ['client_id', 'branch_name', 'branch_description', 'status'];
+    protected $fillable = ['branch_code', 'client_id', 'branch_name', 'branch_description', 'status'];
 
     public function getUser()
     {

@@ -26,10 +26,14 @@ class Credentials extends Model
     {
         return $this->hasOne('App\SubscriptionType', 'id', 'subscription');
     }
-    public function branches()
+    public function client()
     {
-        return $this->belongsTo('App\Branch', 'credentials_id', 'id');
+        return $this->belongsTo('App\Client');
     }
+    // public function branches()
+    // {
+    //     return $this->hasMany('App\Branch', 'credentials_id');
+    // }
     public function outbox()
     {
         return $this->hasOne('App\Outbox', 'credentials_id');

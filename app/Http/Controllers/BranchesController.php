@@ -101,4 +101,14 @@ class BranchesController extends Controller
         }
         return view('branch.branch-details', ['branches' => $branches]);
     }
+
+
+    public function update($id){
+
+        $branch = Branch::findOrFail($id);
+
+        $branch->update(['status' => !$branch->status]);
+
+        return response()->json(['status' => 'success', 'message' => 'Success!'], 200);
+    }
 }

@@ -35,12 +35,12 @@ class ClientBranchesController extends Controller
         $data = $request->except(['status', 'client_id']);
         // Create
         Branch::create($this->data($data) + ['status' => true, 'client_id' => $request->client_id]);
-
+        
         return redirect()->route('client.branches', $request['client_id'])->with('success', 'thank you');
     }
     public function updateClientBranch(Request $request)
     {
-        $branches = Branch::whereIn('id', $request['branch_id'])->update(['client_id' => $request['client_id']]);
+        Branch::whereIn('id', $request['branch_id'])->update([ 'client_id' => $request['client_id'] ]);
 
         return redirect()->route('client.branches', $request['client_id'])->with('success', 'thank you!');
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Traits\ClientsTrait;
 use App\Http\Traits\MessagesTrait;
+use App\Credentials;
 
 class MessagesController extends Controller
 {
@@ -13,31 +14,18 @@ class MessagesController extends Controller
 
     public function textBlastSend(Request $request)
     {
-    	DB::beginTransaction();
+        DB::beginTransaction();
 
         try {
+            // Globe Sender
+            // $this->globeSender($messages);
 
-            $messages = $request->message;
-            
-            if($this->tokenCode()->status == 1){
+            // Process of sending message
+            $this->processMessage($request->message);
 
-                // Globe Sender
-                // $this->globeSender($messages);
+            DB::commit();
 
-                // check message length
-                if(strlen($messages) > 160){
-
-                    // split message if greater thank 160 characters
-                    $split_messages = str_split($messages, 160);
-                    // loop message
-                    $this->messageLoop($split_messages);
-                }else{
-
-                    //Send SMS
-                    $this->createMessage($messages);
-                }
-
-            }
+            return response()->json(['status' => 'success', 'message' => 'Message has been sent!'], 200);
             
         } catch (Exception $e) {
             
@@ -45,9 +33,5 @@ class MessagesController extends Controller
 
             return response()->json(['error' => 'error', 'message' => $e->getMessage()], 500);
         }
-
-        DB::commit();
-
-    	return response()->json(['status' => 'success', 'message' => 'Message has been sent!'], 200);
     }
 }

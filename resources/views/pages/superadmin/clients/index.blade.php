@@ -48,9 +48,9 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a> |
 
-                                                    <a href="#" class="btn btn-success btn-sm">
+                                                    <button type="button" class="btn btn-success btn-sm status" rel="{{ $client->id }}">
                                                         <i class="fa fa-reply"></i>
-                                                    </a> |
+                                                    </button> |
 
                                                     <a href="{{ route('client.branches', $client->id) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Branches">
                                                         <i class="fa fa-plus"></i>
@@ -69,7 +69,36 @@
                 </div>
             </div>
         </div>
-
     </div>
+@endsection
+
+
+@section('script')
+    
+    <script>
+        
+        $(function(){
+
+            $('.status').on('click', function(){
+
+
+                let id = $(this).attr('rel');
+
+                let data = {
+
+                    method: 'POST',
+                    url: `/update-client-status/${id}`,
+                    data: {
+
+                        _token: "{{ csrf_token() }}"
+                    }
+                }
+
+                fireAlert(data);
+
+            });
+
+        });
+    </script>
 
 @endsection

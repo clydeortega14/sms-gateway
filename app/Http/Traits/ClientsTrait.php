@@ -7,13 +7,18 @@ trait ClientsTrait {
 
 	protected function tokenCode()
 	{
-		return Credentials::where('access_token', request()->header('access_token'))
-            ->where('short_code', request()->header('short_code'))
+		return Credentials::where('app_id', request()->header('App-ID'))
+            ->where('app_secret', request()->header('App-Secret'))
             ->first();
 	}
 
 	protected function branch()
 	{
-		return $this->tokenCode()->client->branches()->where('id', request()->header('BR_CODE'))->first();
+		return request()->headers->has('Br-Code') ? $this->getBranch()->id : null;
+	}
+
+	protected function getBranch()
+	{
+		return $this->tokenCode()->client->branches()->where('id', request()->header('Br-Code'))->first();
 	}
 }

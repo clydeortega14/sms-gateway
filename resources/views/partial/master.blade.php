@@ -60,7 +60,48 @@
     <script src="{{ asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js') }}"></script>
 
     <!-- SweetAlert -->
-    <script src="{{ asset('js/lib/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Custom Sweet Alert -->
+    <script>
+        function fireAlert(options)
+        {
+            return swal({
+
+              title: "Are you sure?",
+              text: "You want to update status?",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+
+            }).then((isConfirm) => {
+
+              if(isConfirm){
+
+                ajaxRequest(options).done(res => {
+                  location.reload()
+                  swal("Success", "successfully updated", "success")
+                });
+                
+              }else{
+
+                swal("Warning", "Aborted", "warning")
+              }
+            })
+        }
+
+        function ajaxRequest(options){
+
+          return $.ajax({
+
+            method: options.method,
+            url: options.url,
+            data: options.data,
+
+          }).fail(error => console.log(error))
+
+        }
+    </script>
+    {{-- <script src="{{ asset('js/lib/sweetalert/sweetalert.min.js') }}"></script> --}}
     {{-- <script src="js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <script src="js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script src="js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>

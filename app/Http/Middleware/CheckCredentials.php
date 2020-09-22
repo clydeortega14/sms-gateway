@@ -21,17 +21,15 @@ class CheckCredentials
 
             return response()->json(['status' => 'error', 'message' => 'Unauthorized'], 401);
 
-        }else if(!request()->header('BR_CODE')){
+        }else if($this->tokenCode()->status != 1){
 
-            return response()->json(['status' => 'error', 'message' => 'Branch Code / Branch ID has not been set!'], 401);
+            return response()->json(['status' => 'error', 'message' => 'Credentials is not activated!'], 401);
 
-        }else if(is_null($this->branch())){
+        }else if($request->headers->has('Br-Code') && 
+                ( is_null($this->getBranch()) || 
+                !$this->getBranch()->status )){
 
-            return response()->json(['status' => 'error', 'message' => 'Branch does not exists'], 403);
-
-        }else if(!$this->branch()->status){
-
-            return response()->json(['status' => 'error', 'message' => 'Your branch is currently inactive right now, Please contact administrator to activate'], 403);
+                return response()->json(['status' => 'error', 'message' => 'Branch Not Foud Or Branch is currently inactive'], 404);
         }
 
         return $next($request);

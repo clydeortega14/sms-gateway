@@ -114,6 +114,15 @@ class ClientController extends Controller
         return redirect()->back()->with('success', 'Successfully Updated');
     }
 
+    public function clientStatus($id)
+    {
+        $client = Client::findOrFail($id);
+
+        $client->update(['status' => !$client->status]);
+
+        return response()->json('success');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

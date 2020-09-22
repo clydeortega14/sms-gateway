@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Laravel\Passport\Http\Middleware\CheckClientCredentials;
 
 class Kernel extends HttpKernel
 {
@@ -63,6 +64,7 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'head-office' => \App\Http\Middleware\HeadOffice::class,
-        'credentials' => \App\Http\Middleware\CheckCredentials::class
+        'credentials' => \App\Http\Middleware\CheckCredentials::class,
+        'client' => CheckClientCredentials::class
     ];
 }

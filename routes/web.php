@@ -84,6 +84,8 @@ Route::middleware(['auth'])->group(function(){
 
 	/*Clients Resource*/
 	Route::resource('clients', 'ClientController');
+
+	Route::post('update-client-status/{client_id}', 'ClientController@clientStatus');
 	// client credentials
 	Route::get('client/{id}/credentials', 'ClientCredentials@index')->name('client.credentials');
 	// client branches

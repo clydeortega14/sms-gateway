@@ -65,8 +65,6 @@
 
 @section('script')
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
     <script>
         
         $(function(){
@@ -74,45 +72,16 @@
             $('.update-status').on('click', function(){
 
                 let id = $(this).attr('rel');
+                let options = {
+                    method: 'PUT',
+                    url: `/update-branch-status/${id}`,
+                    data: {
 
-                swal({
-
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-
-                }).then((confirm) => {
-                    if(confirm){
-
-                        $.ajax({
-
-                            method: 'PUT',
-                            url: `/update-branch-status/${id}`,
-                            data: {
-                                _token: "{{ csrf_token() }}"
-                            },
-                            success: function(response){
-
-                                swal("Successfully Update", {
-                                    icon: "success"
-                                });
-
-                                location.reload()
-                            },
-                            error: function(err){
-                                console.log(error)
-                            }
-                        })
-
-                    }else{
-
-                        swal("Error", "updating has been cancelled", "error")
+                        _token: "{{ csrf_token() }}"
                     }
-                })
+                }
 
-                
+                fireAlert(options)
             })
 
         });

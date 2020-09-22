@@ -17,7 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/textblast-send', 'MessagesController@textBlastSend')->middleware(['api', 'credentials']);
+Route::post('/token', 'GenerateTokenController@accessToken');
+
+Route::post('/textblast-send', 'MessagesController@textBlastSend')->middleware(['api', 'client', 'credentials']);
 
 Route::post('/otp-sender', 'MessageController@otpsender');
 Route::post('/send', 'MessageController@send');

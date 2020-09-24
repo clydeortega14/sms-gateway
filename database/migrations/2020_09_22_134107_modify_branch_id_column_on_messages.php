@@ -26,7 +26,7 @@ class ModifyBranchIdColumnOnMessages extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            //
+            $table->dropColumn('branch_id');
         });
     }
 }

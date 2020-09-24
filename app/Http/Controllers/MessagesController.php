@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Traits\ClientsTrait;
 use App\Http\Traits\MessagesTrait;
-use App\Credentials;
 
 class MessagesController extends Controller
 {
     use ClientsTrait, MessagesTrait;
+    
+    /**
+      * Handle SMS Sending API
+      * @param \Illuminate\Http\Request $request
+      * @return \Illuminate\Http\Response
+    */
 
     public function textBlastSend(Request $request)
-    {
+    {        
         DB::beginTransaction();
 
         try {

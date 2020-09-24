@@ -25,7 +25,7 @@ class CheckCredentials
 
             return response()->json(['status' => 'error', 'message' => 'Credentials is not activated!'], 401);
 
-        }else if($request->headers->has('Br-Code') && 
+        }else if($request->has($this->branchName()) && 
                 ( is_null($this->getBranch()) || 
                 !$this->getBranch()->status )){
 

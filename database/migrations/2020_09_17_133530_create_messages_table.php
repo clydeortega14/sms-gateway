@@ -15,7 +15,7 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('client_id');
+            $table->unsignedInteger('credential_id');
             $table->unsignedInteger('branch_id');
             $table->string('mobile_number');
             $table->text('message');
@@ -23,7 +23,7 @@ class CreateMessagesTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('client_id')->references('id')->on('clients')
+            $table->foreign('credential_id')->references('id')->on('credentials')
             ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('branch_id')->references('id')->on('branches')

@@ -8,7 +8,7 @@ use App\Services\ClientCredentials;
 class GenerateTokenController extends Controller
 {
     
-    public function accessToken(ClientCredentials $credentials)
+    public function accessToken(Request $request, ClientCredentials $credentials)
     {
         return $credentials->getToken([
 

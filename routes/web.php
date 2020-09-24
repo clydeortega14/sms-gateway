@@ -100,5 +100,7 @@ Route::middleware(['auth'])->group(function(){
 	/* Globe Credentials */
 	Route::get('/add-credential/{client_id}', 'ClientController@addCredential')->name('add.credential');
 
+	Route::get('/edit-credential/{client_id}/{credential_id}', 'ClientController@editCredential')->name('edit.credential');
+
 
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Credentials;
 
 class ClientController extends Controller
 {
@@ -136,8 +137,20 @@ class ClientController extends Controller
 
     public function addCredential($client_id)
     {
-        $client = Client::findOrFail($client_id);
+        $client = $this->findClientId($client_id);
 
         return view('pages.credentials.add-credential', compact('client'));
+    }
+    public function editCredential($client_id, $credential_id)
+    {
+        $client = $this->findClientId($client_id);
+        $credential = Credentials::findOrFail($credential_id);
+
+        return view('pages.credentials.add-credential', compact('client', 'credential'));
+    }
+
+    protected function findClientId($id)
+    {
+        return Client::findOrFail($id);
     }
 }

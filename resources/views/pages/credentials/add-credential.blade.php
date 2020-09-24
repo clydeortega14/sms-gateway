@@ -17,16 +17,19 @@
 							<form action="#" method="POST">
 								@csrf
 
+								@php
+									$cred = isset($credential);
+								@endphp
 								<input type="hidden" name="client_id" value="{{ $client->id }}">
-								
+
 								<div class="form-group">
-									<label>Client</label>
-									<input type="text" value="{{ $client->name}}" readonly class="form-control">
+									<label>App Name</label>
+									<input type="text" name="app_name" class="form-control" value="{{ $cred ? $credential->app_name : old('app_name') }}">
 								</div>
 
 								<div class="form-group">
-									<label>passphrase</label>
-									<input type="text" name="passphrase" class="form-control">
+									<label>Passphrase</label>
+									<input type="text" name="passphrase" class="form-control" value="{{ $cred ? $credential->passphrase : old('passphrase') }}">
 								</div>
 
 								<div class="form-group">

@@ -14,14 +14,9 @@ class Credentials extends Model
         'app_id', 
         'app_secret', 
         'text_rate', 
-        'subscription', 
-        'status'
+        'subscription'
     ];
 
-    public function getStatus()
-    {
-        return $this->hasOne('App\Status', 'id', 'status');
-    }
     public function getSubscription()
     {
         return $this->hasOne('App\SubscriptionType', 'id', 'subscription');
